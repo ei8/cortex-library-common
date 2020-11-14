@@ -29,6 +29,38 @@ namespace ei8.Cortex.Library.Common
         All = Active | Inactive
     }
 
+    public enum SortByValue
+    {
+        NeuronTag,
+        NeuronCreationDateTime,
+        NeuronCreationAuthorTag,
+        NeuronLastModificationDateTime,
+        NeuronLastModificationAuthorTag,
+        NeuronUnifiedLastModificationDateTime,
+        NeuronUnifiedLastModificationAuthorTag,
+        NeuronActive,
+        NeuronRegionTag,
+        TerminalEffect,
+        TerminalStrength,
+        TerminalCreationDateTime,
+        TerminalCreationAuthorTag,
+        TerminalLastModificationDateTime,
+        TerminalLastModificationAuthorTag,
+        TerminalActive
+    }
+
+    public enum SortOrderValue
+    {
+        Ascending,
+        Descending
+    }
+
+    public enum AccessType
+    {
+        Read,
+        Write
+    }
+
     // DEL: Unnecessarily duplicated from EventSourcing.Common, remove upon NotificationData refactor
     public struct Event
     {
