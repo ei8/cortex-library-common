@@ -12,16 +12,18 @@ namespace ei8.Cortex.Library.Common
 
         public Terminal(Terminal original)
         {
-            this.Id = original.Id;
-            this.PostsynapticNeuronId = original.PostsynapticNeuronId;
-            this.PresynapticNeuronId = original.PresynapticNeuronId;
-            this.Effect = original.Effect;
-            this.Strength = original.Strength;
-            this.Version = original.Version; 
-            this.AuthorId = original.AuthorId;
-            this.AuthorTag = original.AuthorTag;            
-            this.Timestamp = original.Timestamp;
-            this.Active = original.Active;
+            if (original != null)
+            {
+                this.Id = original.Id;
+                this.PostsynapticNeuronId = original.PostsynapticNeuronId;
+                this.PresynapticNeuronId = original.PresynapticNeuronId;
+                this.Effect = original.Effect;
+                this.Strength = original.Strength;
+                this.Version = original.Version;
+                this.Creation = new AuthorEventInfo(original.Creation);
+                this.LastModification = new AuthorEventInfo(original.LastModification);
+                this.Active = original.Active;
+            }
         }
 
         public string Id { get; set; }
@@ -30,9 +32,8 @@ namespace ei8.Cortex.Library.Common
         public string Effect { get; set; }
         public string Strength { get; set; }
         public int Version { get; set; }
-        public string AuthorId { get; set; }
-        public string AuthorTag { get; set; }
-        public string Timestamp { get; set; }
+        public AuthorEventInfo Creation { get; set; }
+        public AuthorEventInfo LastModification { get; set; }
         public bool Active { get; set; }
     }
 }
