@@ -32,19 +32,19 @@ namespace ei8.Cortex.Library.Common
     public enum SortByValue
     {
         NeuronTag,
-        NeuronCreationDateTime,
+        NeuronCreationTimestamp,
         NeuronCreationAuthorTag,
-        NeuronLastModificationDateTime,
+        NeuronLastModificationTimestamp,
         NeuronLastModificationAuthorTag,
-        NeuronUnifiedLastModificationDateTime,
+        NeuronUnifiedLastModificationTimestamp,
         NeuronUnifiedLastModificationAuthorTag,
         NeuronActive,
         NeuronRegionTag,
         TerminalEffect,
         TerminalStrength,
-        TerminalCreationDateTime,
+        TerminalCreationTimestamp,
         TerminalCreationAuthorTag,
-        TerminalLastModificationDateTime,
+        TerminalLastModificationTimestamp,
         TerminalLastModificationAuthorTag,
         TerminalActive
     }
