@@ -28,6 +28,7 @@ namespace ei8.Cortex.Library.Common
                 this.UnifiedLastModification = new AuthorEventInfo(original.UnifiedLastModification);
                 this.restrictionReasons = new List<string>(original.RestrictionReasons);
                 this.ReadOnly = original.ReadOnly;
+                this.IsCurrentUserCreationAuthor = original.IsCurrentUserCreationAuthor;
                 this.Active = original.Active;
             }
         }        
@@ -54,6 +55,8 @@ namespace ei8.Cortex.Library.Common
         public AuthorEventInfo LastModification { get; set; }
 
         public AuthorEventInfo UnifiedLastModification { get; set; }
+
+        public bool IsCurrentUserCreationAuthor { get; set; }
 
         public bool Active { get; set; }
 
