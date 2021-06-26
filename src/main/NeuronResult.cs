@@ -8,10 +8,9 @@ namespace ei8.Cortex.Library.Common
 {
     public class NeuronResult
     {
-        protected IList<string> restrictionReasons;
         public NeuronResult()
         {
-            this.restrictionReasons = new List<string>();
+            this.RestrictionReasons = new string[0];
         }
 
         public NeuronResult(NeuronResult original) : this()
@@ -26,7 +25,7 @@ namespace ei8.Cortex.Library.Common
                 this.Creation = new AuthorEventInfo(original.Creation);
                 this.LastModification = new AuthorEventInfo(original.LastModification);
                 this.UnifiedLastModification = new AuthorEventInfo(original.UnifiedLastModification);
-                this.restrictionReasons = new List<string>(original.RestrictionReasons);
+                this.RestrictionReasons = original.RestrictionReasons.ToArray();
                 this.ReadOnly = original.ReadOnly;
                 this.IsCurrentUserCreationAuthor = original.IsCurrentUserCreationAuthor;
                 this.Active = original.Active;
@@ -60,36 +59,8 @@ namespace ei8.Cortex.Library.Common
 
         public bool Active { get; set; }
 
-        public IEnumerable<string> RestrictionReasons => this.restrictionReasons.ToArray();
+        public IEnumerable<string> RestrictionReasons { get; set; }
 
-        public bool ReadOnly { get; protected set; }
-
-        public void RestrictAccess(AccessType type, string reason)
-        {
-            if (type == AccessType.Write)
-                this.ReadOnly = true;
-            else
-            {
-                this.Id = Guid.Empty.ToString();
-                this.Tag = string.Empty;
-
-                if (this.Terminal != null)
-                    this.Terminal = new Terminal() { Creation = NeuronResult.CreateAuthorEventInfo() };
-
-                this.Active = true;
-                this.Creation = NeuronResult.CreateAuthorEventInfo();
-                this.Region = new NeuronInfo();
-                this.LastModification = NeuronResult.CreateAuthorEventInfo();
-                this.UnifiedLastModification = NeuronResult.CreateAuthorEventInfo();
-                this.Version = 0;
-            }
-
-            this.restrictionReasons.Add(reason);
-        }
-
-        private static AuthorEventInfo CreateAuthorEventInfo()
-        {
-            return new AuthorEventInfo() { Author = new NeuronInfo() };
-        }
+        public bool ReadOnly { get; set; }
     }
 }
