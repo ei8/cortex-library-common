@@ -6,14 +6,14 @@ using System.Text;
 
 namespace ei8.Cortex.Library.Common
 {
-    public class NeuronResult
+    public class Neuron
     {
-        public NeuronResult()
+        public Neuron()
         {
-            this.RestrictionReasons = new string[0];
+            this.Validation = new ValidationInfo();
         }
 
-        public NeuronResult(NeuronResult original) : this()
+        public Neuron(Neuron original) : this()
         {
             if (original != null)
             {
@@ -25,10 +25,8 @@ namespace ei8.Cortex.Library.Common
                 this.Creation = new AuthorEventInfo(original.Creation);
                 this.LastModification = new AuthorEventInfo(original.LastModification);
                 this.UnifiedLastModification = new AuthorEventInfo(original.UnifiedLastModification);
-                this.RestrictionReasons = original.RestrictionReasons.ToArray();
-                this.ReadOnly = original.ReadOnly;
-                this.IsCurrentUserCreationAuthor = original.IsCurrentUserCreationAuthor;
                 this.Active = original.Active;
+                this.Validation = new ValidationInfo(original.Validation);
             }
         }        
 
@@ -55,12 +53,8 @@ namespace ei8.Cortex.Library.Common
 
         public AuthorEventInfo UnifiedLastModification { get; set; }
 
-        public bool IsCurrentUserCreationAuthor { get; set; }
-
         public bool Active { get; set; }
 
-        public IEnumerable<string> RestrictionReasons { get; set; }
-
-        public bool ReadOnly { get; set; }
+        public ValidationInfo Validation { get; set; }
     }
 }

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ei8.Cortex.Library.Common
 {
-    public class QueryResult
+    public class QueryResult<T> where T : class
     {
-        public IEnumerable<NeuronResult> Neurons { get; set; }
+        public IEnumerable<T> Items { get; set; }
 
         public int Count { get; set; }
     }
