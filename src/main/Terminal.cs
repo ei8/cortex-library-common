@@ -8,6 +8,7 @@ namespace ei8.Cortex.Library.Common
     {
         public Terminal()
         {
+            this.Validation = new ValidationInfo();
         }
 
         public Terminal(Terminal original)
@@ -23,6 +24,8 @@ namespace ei8.Cortex.Library.Common
                 this.Creation = new AuthorEventInfo(original.Creation);
                 this.LastModification = new AuthorEventInfo(original.LastModification);
                 this.Active = original.Active;
+                this.Url = original.Url;
+                this.Validation = new ValidationInfo(original.Validation);
             }
         }
 
@@ -35,5 +38,7 @@ namespace ei8.Cortex.Library.Common
         public AuthorEventInfo Creation { get; set; }
         public AuthorEventInfo LastModification { get; set; }
         public bool Active { get; set; }
+        public string Url { get; set; }
+        public ValidationInfo Validation { get; set; }
     }
 }

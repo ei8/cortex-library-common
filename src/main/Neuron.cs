@@ -26,6 +26,7 @@ namespace ei8.Cortex.Library.Common
                 this.LastModification = new AuthorEventInfo(original.LastModification);
                 this.UnifiedLastModification = new AuthorEventInfo(original.UnifiedLastModification);
                 this.Active = original.Active;
+                this.Url = original.Url;
                 this.Validation = new ValidationInfo(original.Validation);
             }
         }        
@@ -54,6 +55,8 @@ namespace ei8.Cortex.Library.Common
         public AuthorEventInfo UnifiedLastModification { get; set; }
 
         public bool Active { get; set; }
+
+        public string Url { get; set; }
 
         public ValidationInfo Validation { get; set; }
     }
