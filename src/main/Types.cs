@@ -46,7 +46,9 @@ namespace ei8.Cortex.Library.Common
         TerminalCreationAuthorTag,
         TerminalLastModificationTimestamp,
         TerminalLastModificationAuthorTag,
-        TerminalActive
+        TerminalActive,
+        NeuronExternalReferenceUrl,
+        TerminalExternalReferenceUrl
     }
 
     public enum SortOrderValue
