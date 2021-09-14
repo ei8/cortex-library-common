@@ -11,7 +11,7 @@ namespace ei8.Cortex.Library.Common
             this.Validation = new ValidationInfo();
         }
 
-        public Terminal(Terminal original)
+        public Terminal(Terminal original) : this()
         {
             if (original != null)
             {

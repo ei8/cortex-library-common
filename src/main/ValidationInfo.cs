@@ -12,7 +12,7 @@ namespace ei8.Cortex.Library.Common
             this.RestrictionReasons = new string[0];
         }
 
-        public ValidationInfo(ValidationInfo original)
+        public ValidationInfo(ValidationInfo original) : this()
         {
             this.RestrictionReasons = original.RestrictionReasons.ToArray();
             this.ReadOnly = original.ReadOnly;
