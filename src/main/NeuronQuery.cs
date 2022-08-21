@@ -176,39 +176,44 @@ namespace ei8.Cortex.Library.Common
         public static bool TryParse(string value, out NeuronQuery result)
         {
             result = null;
+            bool bResult = false;
 
-            value = value.StartsWith("?") ? value.Substring(1) : value;
-            var queryStrings = value.Split('&');
-
-            if (queryStrings.Length > 0)
+            if (!string.IsNullOrWhiteSpace(value))
             {
-                var nqType = typeof(NeuronQuery);
-                var rid = nqType.GetQueryKey(nameof(NeuronQuery.RegionIdNot));
-                result = new NeuronQuery
+                value = value.StartsWith("?") ? value.Substring(1) : value;
+                var queryStrings = value.Split('&');
+
+                if (queryStrings.Length > 0)
                 {
-                    TagContains = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.TagContains))),
-                    TagContainsNot = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.TagContainsNot))),
-                    TagContainsIgnoreWhitespace = queryStrings.GetNullableBoolValue(nqType.GetQueryKey(nameof(NeuronQuery.TagContainsIgnoreWhitespace))),
-                    Id = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.Id))),
-                    IdNot = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.IdNot))),
-                    Postsynaptic = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.Postsynaptic))),
-                    PostsynapticNot = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.PostsynapticNot))),
-                    Presynaptic = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.Presynaptic))),
-                    PresynapticNot = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.PresynapticNot))),
-                    RegionId = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.RegionId))),
-                    RegionIdNot = queryStrings.GetQueryArrayOrDefault(rid),
-                    RelativeValues = queryStrings.GetNullableEnumValue<RelativeValues>(nqType.GetQueryKey(nameof(NeuronQuery.RelativeValues))),
-                    PageSize = queryStrings.GetNullableIntValue(nqType.GetQueryKey(nameof(NeuronQuery.PageSize))),
-                    Page = queryStrings.GetNullableIntValue(nqType.GetQueryKey(nameof(NeuronQuery.Page))),
-                    NeuronActiveValues = queryStrings.GetNullableEnumValue<ActiveValues>(nqType.GetQueryKey(nameof(NeuronQuery.NeuronActiveValues))),
-                    TerminalActiveValues = queryStrings.GetNullableEnumValue<ActiveValues>(nqType.GetQueryKey(nameof(NeuronQuery.TerminalActiveValues))),
-                    SortBy = queryStrings.GetNullableEnumValue<SortByValue>(nqType.GetQueryKey(nameof(NeuronQuery.SortBy))),
-                    SortOrder = queryStrings.GetNullableEnumValue<SortOrderValue>(nqType.GetQueryKey(nameof(NeuronQuery.SortOrder))),
-                    ExternalReferenceUrl = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.ExternalReferenceUrl))),
-                    ExternalReferenceUrlContains = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.ExternalReferenceUrlContains)))
-                };
+                    var nqType = typeof(NeuronQuery);
+                    var rid = nqType.GetQueryKey(nameof(NeuronQuery.RegionIdNot));
+                    result = new NeuronQuery
+                    {
+                        TagContains = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.TagContains))),
+                        TagContainsNot = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.TagContainsNot))),
+                        TagContainsIgnoreWhitespace = queryStrings.GetNullableBoolValue(nqType.GetQueryKey(nameof(NeuronQuery.TagContainsIgnoreWhitespace))),
+                        Id = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.Id))),
+                        IdNot = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.IdNot))),
+                        Postsynaptic = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.Postsynaptic))),
+                        PostsynapticNot = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.PostsynapticNot))),
+                        Presynaptic = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.Presynaptic))),
+                        PresynapticNot = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.PresynapticNot))),
+                        RegionId = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.RegionId))),
+                        RegionIdNot = queryStrings.GetQueryArrayOrDefault(rid),
+                        RelativeValues = queryStrings.GetNullableEnumValue<RelativeValues>(nqType.GetQueryKey(nameof(NeuronQuery.RelativeValues))),
+                        PageSize = queryStrings.GetNullableIntValue(nqType.GetQueryKey(nameof(NeuronQuery.PageSize))),
+                        Page = queryStrings.GetNullableIntValue(nqType.GetQueryKey(nameof(NeuronQuery.Page))),
+                        NeuronActiveValues = queryStrings.GetNullableEnumValue<ActiveValues>(nqType.GetQueryKey(nameof(NeuronQuery.NeuronActiveValues))),
+                        TerminalActiveValues = queryStrings.GetNullableEnumValue<ActiveValues>(nqType.GetQueryKey(nameof(NeuronQuery.TerminalActiveValues))),
+                        SortBy = queryStrings.GetNullableEnumValue<SortByValue>(nqType.GetQueryKey(nameof(NeuronQuery.SortBy))),
+                        SortOrder = queryStrings.GetNullableEnumValue<SortOrderValue>(nqType.GetQueryKey(nameof(NeuronQuery.SortOrder))),
+                        ExternalReferenceUrl = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.ExternalReferenceUrl))),
+                        ExternalReferenceUrlContains = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.ExternalReferenceUrlContains)))
+                    };
+                    bResult = true;
+                }
             }
-            return result != null;
+            return bResult;
         }
     }
 }
