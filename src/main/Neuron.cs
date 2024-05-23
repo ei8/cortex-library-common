@@ -59,6 +59,8 @@ namespace ei8.Cortex.Library.Common
 
         public bool Active { get; set; }
 
+        public IEnumerable<Traversal> Traversals { get; set; }
+
         public string Url { get; set; }        
 
         public ValidationInfo Validation { get; set; }
