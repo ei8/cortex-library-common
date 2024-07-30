@@ -11,6 +11,7 @@ namespace ei8.Cortex.Library.Common
         public Neuron()
         {
             this.Validation = new ValidationInfo();
+            this.Traversals = Array.Empty<Traversal>();
         }
 
         public Neuron(Neuron original) : this()

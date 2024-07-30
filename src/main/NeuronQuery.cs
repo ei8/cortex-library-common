@@ -21,6 +21,12 @@ namespace ei8.Cortex.Library.Common
         public IEnumerable<string> PresynapticNot { get; set; }
 
         [QueryKey]
+        public IEnumerable<string> Tag { get; set; }
+
+        [QueryKey]
+        public IEnumerable<string> TagNot { get; set; }
+
+        [QueryKey]
         public IEnumerable<string> TagContains { get; set; }
 
         [QueryKey]
@@ -88,6 +94,8 @@ namespace ei8.Cortex.Library.Common
 
             this.Id.AppendQuery(nqType.GetQueryKey(nameof(NeuronQuery.Id)), queryStringBuilder);
             this.IdNot.AppendQuery(nqType.GetQueryKey(nameof(NeuronQuery.IdNot)), queryStringBuilder);
+            this.Tag.AppendQuery(nqType.GetQueryKey(nameof(NeuronQuery.Tag)), queryStringBuilder, true);
+            this.TagNot.AppendQuery(nqType.GetQueryKey(nameof(NeuronQuery.TagNot)), queryStringBuilder, true);
             this.TagContains.AppendQuery(nqType.GetQueryKey(nameof(NeuronQuery.TagContains)), queryStringBuilder);
             this.TagContainsNot.AppendQuery(nqType.GetQueryKey(nameof(NeuronQuery.TagContainsNot)), queryStringBuilder);
 
@@ -189,6 +197,8 @@ namespace ei8.Cortex.Library.Common
                     var rid = nqType.GetQueryKey(nameof(NeuronQuery.RegionIdNot));
                     result = new NeuronQuery
                     {
+                        Tag = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.Tag))),
+                        TagNot = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.TagNot))),
                         TagContains = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.TagContains))),
                         TagContainsNot = queryStrings.GetQueryArrayOrDefault(nqType.GetQueryKey(nameof(NeuronQuery.TagContainsNot))),
                         TagContainsIgnoreWhitespace = queryStrings.GetNullableBoolValue(nqType.GetQueryKey(nameof(NeuronQuery.TagContainsIgnoreWhitespace))),
