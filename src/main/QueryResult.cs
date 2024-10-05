@@ -9,5 +9,7 @@ namespace ei8.Cortex.Library.Common
         public IEnumerable<T> Items { get; set; }
 
         public int Count { get; set; }
+
+        public Guid UserNeuronId { get; set; }
     }
 }
